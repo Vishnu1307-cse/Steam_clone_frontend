@@ -1,0 +1,169 @@
+/* ===== Page Wrapper ===== */
+.game-details {
+  max-width: 820px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(180deg, #111827, #020617);
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  color: #e5e7eb;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Title ===== */
+.game-details h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Price ===== */
+.price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #00ff9c;
+  margin-bottom: 18px;
+}
+
+/* ===== Image ===== */
+.game-details img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 20px 0 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== Description ===== */
+.desc {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  color: #d1d5db;
+}
+
+/* ===== Creator ===== */
+.creator {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* ===== Inputs (Edit Mode) ===== */
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background: #020617;
+  color: #f9fafb;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.8);
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* ===== Action Buttons ===== */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Edit Button */
+.actions button:first-child {
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+}
+
+/* Delete Button */
+.actions button:last-child {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+}
+
+.actions button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Buttons Base ===== */
+.actions button {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+/* ===== Edit Button ===== */
+.actions .edit-btn {
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+}
+
+.actions .edit-btn:hover {
+  background: linear-gradient(135deg, #60a5fa, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* ===== Save Button ===== */
+.actions .save-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+.actions .save-btn:hover {
+  background: linear-gradient(135deg, #4ade80, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.4);
+}
+
+/* ===== Delete Button ===== */
+.actions .delete-btn {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+}
+
+.actions .delete-btn:hover {
+  background: linear-gradient(135deg, #f87171, #991b1b);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(185, 28, 28, 0.5);
+}
+
+/* ===== Purchase Button ===== */
+.actions .purchase-btn {
+  background: linear-gradient(135deg, #facc15, #ca8a04);
+  color: #020617;
+}
+
+.actions .purchase-btn:hover {
+  background: linear-gradient(135deg, #fde047, #a16207);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(202, 138, 4, 0.5);
+}
