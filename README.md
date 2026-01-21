@@ -26,42 +26,42 @@ A modern React-based frontend application for a Steam-like game distribution pla
 ## Project Structure
 
 steam_clone/
-├── public/ # Static assets
+├── public/                 # Static assets
 ├── src/
-│ ├── api/
-│ │ └── axios.js # Axios configuration
-│ ├── assets/ # Images, fonts, etc.
-│ ├── auth/
-│ │ ├── AuthContext.jsx # Authentication context
-│ │ └── useAuth.js # Custom auth hook
-│ ├── components/
-│ │ ├── GameCard.jsx
-│ │ ├── Header.jsx
-│ │ └── ProtectedRoute.jsx
-│ ├── layouts/
-│ │ └── AppLayout.jsx
-│ ├── pages/
-│ │ ├── AdminUsers.jsx
-│ │ ├── Dashboard.jsx
-│ │ ├── GameDetails.jsx
-│ │ ├── Library.jsx
-│ │ ├── LoginAdmin.jsx
-│ │ ├── LoginUser.jsx
-│ │ ├── MyAccount.jsx
-│ │ ├── Purchase.jsx
-│ │ ├── RegisterAdmin.jsx
-│ │ ├── RegisterUser.jsx
-│ │ └── UploadGame.jsx
-│ ├── styles/
-│ │ ├── auth.css
-│ │ ├── dashboard.css
-│ │ ├── gameDetails.css
-│ │ ├── header.css
-│ │ ├── App.css
-│ │ └── index.css
-│ ├── App.jsx
-│ ├── main.jsx
-│ └── index.css
+│   ├── api/
+│   │   └── axios.js        # Axios configuration
+│   ├── assets/             # Images, fonts, etc.
+│   ├── auth/
+│   │   ├── AuthContext.jsx # Authentication context
+│   │   └── useAuth.js      # Custom auth hook
+│   ├── components/
+│   │   ├── GameCard.jsx
+│   │   ├── Header.jsx
+│   │   └── ProtectedRoute.jsx
+│   ├── layouts/
+│   │   └── AppLayout.jsx
+│   ├── pages/
+│   │   ├── AdminUsers.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── GameDetails.jsx
+│   │   ├── Library.jsx
+│   │   ├── LoginAdmin.jsx
+│   │   ├── LoginUser.jsx
+│   │   ├── MyAccount.jsx
+│   │   ├── Purchase.jsx
+│   │   ├── RegisterAdmin.jsx
+│   │   ├── RegisterUser.jsx
+│   │   └── UploadGame.jsx
+│   ├── styles/
+│   │   ├── auth.css
+│   │   ├── dashboard.css
+│   │   ├── gameDetails.css
+│   │   ├── header.css
+│   │   ├── App.css
+│   │   └── index.css
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
 ├── .eslintignore
 ├── eslint.config.js
 ├── index.html
