@@ -1,16 +1,184 @@
-# React + Vite
+# Steam Clone - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based frontend application for a Steam-like game distribution platform. Built with Vite, React Router, and Axios for seamless performance and user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Secure login and registration for players
+- **Admin Panel**: Administrative interface for managing users and game uploads
+- **Game Library**: Browse and manage your collection of games
+- **Game Details**: Detailed information pages for each game
+- **Purchase System**: Integrated purchase functionality for buying games
+- **User Dashboard**: Personalized dashboard with account management
+- **Responsive Design**: Fully responsive UI for desktop and mobile devices
+- **Real-time API Integration**: Connected to backend API for dynamic data management
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19.2**: Modern UI library with hooks and functional components
+- **Vite 7.2**: Ultra-fast build tool and development server
+- **React Router DOM 7.12**: Client-side routing and navigation
+- **Axios 1.13**: Promise-based HTTP client for API requests
+- **JWT Decode 4.0**: Token decoding for authentication
+- **ESLint 9.39**: Code quality and linting
+- **CSS3**: Styling with custom CSS modules
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+steam_clone/
+├── public/ # Static assets
+├── src/
+│ ├── api/
+│ │ └── axios.js # Axios instance configuration
+│ ├── assets/ # Images, fonts, and other assets
+│ ├── auth/
+│ │ ├── AuthContext.jsx # Authentication context
+│ │ └── useAuth.js # Authentication hook
+│ ├── components/ # Reusable React components
+│ │ ├── GameCard.jsx # Game card component
+│ │ ├── Header.jsx # Header navigation
+│ │ └── ProtectedRoute.jsx # Route protection
+│ ├── layouts/
+│ │ └── AppLayout.jsx # Main application layout
+│ ├── pages/ # Page components
+│ │ ├── AdminUsers.jsx # Admin users management
+│ │ ├── Dashboard.jsx # Main dashboard
+│ │ ├── GameDetails.jsx # Individual game details
+│ │ ├── Library.jsx # User game library
+│ │ ├── LoginAdmin.jsx # Admin login page
+│ │ ├── LoginUser.jsx # User login page
+│ │ ├── MyAccount.jsx # User account page
+│ │ ├── Purchase.jsx # Purchase page
+│ │ ├── RegisterAdmin.jsx # Admin registration
+│ │ ├── RegisterUser.jsx # User registration
+│ │ └── UploadGame.jsx # Game upload page
+│ ├── styles/ # CSS stylesheets
+│ │ ├── auth.css
+│ │ ├── dashboard.css
+│ │ ├── gameDetails.css
+│ │ ├── header.css
+│ │ ├── App.css
+│ │ └── index.css
+│ ├── App.jsx # Main app component
+│ ├── main.jsx # Application entry point
+│ └── index.css # Global styles
+├── .eslintignore
+├── eslint.config.js # ESLint configuration
+├── index.html # HTML template
+├── package.json # Dependencies and scripts
+├── vite.config.js # Vite configuration
+└── README.md # This file
+
+
+## Installation
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn package manager
+
+### Setup
+
+1. **Navigate to the frontend directory**
+   ```bash
+   cd Frontend/steam_clone
+
+Install dependencies
+npm install
+
+Configure environment variables (if needed)
+
+Create a .env file in the root directory
+Add your backend API URL and other configuration
+Available Scripts
+npm run dev
+
+Development Server
+Starts the development server with hot module replacement (HMR). The app will be available at http://localhost:5173
+
+Build for Production
+npm run build
+
+Creates an optimized production build in the dist/ directory.
+
+Preview Production Build
+npm run preview
+
+Serves the production build locally for testing before deployment.
+
+Lint Code
+npm run lint
+Runs ESLint to check code quality and style compliance.
+
+Authentication System
+The application uses JWT-based authentication with the following user types:
+
+Regular Users: Can browse games, make purchases, and manage their library
+Admin Users: Can manage users, upload games, and handle admin requests
+Authentication is managed through:
+
+AuthContext.jsx: Provides global authentication state
+useAuth.js: Custom hook for accessing authentication
+ProtectedRoute.jsx: Protects routes requiring authentication
+API Integration
+API calls are centralized through axios.js which handles:
+
+Base URL configuration
+Request/response interceptors
+Authentication token management
+Error handling
+Key Pages
+Dashboard: Main landing page with featured games
+Login/Register: User and admin authentication pages
+Game Details: Detailed information about individual games
+Library: User's collection of purchased games
+Purchase: Game purchasing interface
+My Account: User profile and account management
+Admin Users: Admin panel for user management
+Upload Game: Interface for admins to upload new games
+Development Workflow
+Create feature branches for new features
+Use ESLint to maintain code quality
+Test all changes before committing
+Follow React best practices and hooks patterns
+Keep components modular and reusable
+
+Build and Deployment
+npm run build
+npm run preview
+
+Local Build
+Deployment
+The dist/ folder generated by npm run build contains the production-ready files. Deploy this folder to your hosting service:
+
+Netlify
+Vercel
+GitHub Pages
+Any static file hosting service
+Code Quality
+This project uses ESLint to maintain code standards:
+
+React/JSX best practices
+React Hooks rules
+JavaScript modern syntax compliance
+Run npm run lint to check for issues and fix them automatically where possible.
+
+Browser Support
+Chrome (latest)
+Firefox (latest)
+Safari (latest)
+Edge (latest)
+Contributing
+Fork the repository
+Create a feature branch (git checkout -b feature/amazing-feature)
+Commit your changes (git commit -m 'Add amazing feature')
+Push to the branch (git push origin feature/amazing-feature)
+Open a Pull Request
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Support
+For issues, questions, or suggestions, please open an issue on the GitHub repository.
+
+Related Projects
+Backend: Node.js/Express backend API for the Steam Clone platform
+Documentation: See the main repository for full project documentation
