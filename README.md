@@ -29,45 +29,45 @@ steam_clone/
 ├── public/ # Static assets
 ├── src/
 │ ├── api/
-│ │ └── axios.js # Axios instance configuration
-│ ├── assets/ # Images, fonts, and other assets
+│ │ └── axios.js # Axios configuration
+│ ├── assets/ # Images, fonts, etc.
 │ ├── auth/
 │ │ ├── AuthContext.jsx # Authentication context
-│ │ └── useAuth.js # Authentication hook
-│ ├── components/ # Reusable React components
-│ │ ├── GameCard.jsx # Game card component
-│ │ ├── Header.jsx # Header navigation
-│ │ └── ProtectedRoute.jsx # Route protection
+│ │ └── useAuth.js # Custom auth hook
+│ ├── components/
+│ │ ├── GameCard.jsx
+│ │ ├── Header.jsx
+│ │ └── ProtectedRoute.jsx
 │ ├── layouts/
-│ │ └── AppLayout.jsx # Main application layout
-│ ├── pages/ # Page components
-│ │ ├── AdminUsers.jsx # Admin users management
-│ │ ├── Dashboard.jsx # Main dashboard
-│ │ ├── GameDetails.jsx # Individual game details
-│ │ ├── Library.jsx # User game library
-│ │ ├── LoginAdmin.jsx # Admin login page
-│ │ ├── LoginUser.jsx # User login page
-│ │ ├── MyAccount.jsx # User account page
-│ │ ├── Purchase.jsx # Purchase page
-│ │ ├── RegisterAdmin.jsx # Admin registration
-│ │ ├── RegisterUser.jsx # User registration
-│ │ └── UploadGame.jsx # Game upload page
-│ ├── styles/ # CSS stylesheets
+│ │ └── AppLayout.jsx
+│ ├── pages/
+│ │ ├── AdminUsers.jsx
+│ │ ├── Dashboard.jsx
+│ │ ├── GameDetails.jsx
+│ │ ├── Library.jsx
+│ │ ├── LoginAdmin.jsx
+│ │ ├── LoginUser.jsx
+│ │ ├── MyAccount.jsx
+│ │ ├── Purchase.jsx
+│ │ ├── RegisterAdmin.jsx
+│ │ ├── RegisterUser.jsx
+│ │ └── UploadGame.jsx
+│ ├── styles/
 │ │ ├── auth.css
 │ │ ├── dashboard.css
 │ │ ├── gameDetails.css
 │ │ ├── header.css
 │ │ ├── App.css
 │ │ └── index.css
-│ ├── App.jsx # Main app component
-│ ├── main.jsx # Application entry point
-│ └── index.css # Global styles
+│ ├── App.jsx
+│ ├── main.jsx
+│ └── index.css
 ├── .eslintignore
-├── eslint.config.js # ESLint configuration
-├── index.html # HTML template
-├── package.json # Dependencies and scripts
-├── vite.config.js # Vite configuration
-└── README.md # This file
+├── eslint.config.js
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
 
 
 ## Installation
