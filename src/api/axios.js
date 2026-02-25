@@ -2,7 +2,7 @@ import axios from "axios";
 import { decryptToken } from "../utils/tokenEncryption";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000"
+  baseURL: "https://steam-clone-backend-m6bx.onrender.com"
 });
 
 export const setAuthToken = (token) => {
