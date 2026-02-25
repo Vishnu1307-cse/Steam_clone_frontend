@@ -10,35 +10,35 @@ export default function RegisterAdmin() {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
 
-  // STEP 1: Request admin token
+  // STEP 1: Request employee token
   const requestToken = async (e) => {
     e.preventDefault();
 
-    await api.post("/admin/request", {
+    await api.post("/employee/request", {
       username,
       email,
       password
     });
 
-    alert("Admin token request sent. Contact company email.");
+    alert("Employee token request sent. Contact company email.");
     setStep(2);
   };
 
-  // STEP 2: Confirm admin registration
+  // STEP 2: Confirm employee registration
   const confirmAdmin = async (e) => {
     e.preventDefault();
 
-    await api.post("/admin/approve", {
+    await api.post("/employee/approve", {
       email,
       token
     });
 
-    alert("Admin account created. You can now log in.");
+    alert("Employee account created. You can now log in.");
   };
 
   return (
     <form onSubmit={step === 1 ? requestToken : confirmAdmin}>
-      <h2>Admin Registration</h2>
+      <h2>Employee Registration</h2>
 
       {step === 1 && (
         <>
@@ -58,14 +58,14 @@ export default function RegisterAdmin() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button>Request Admin Token</button>
+          <button>Request Employee Token</button>
         </>
       )}
 
       {step === 2 && (
         <>
           <input
-            placeholder="Enter Admin Token"
+            placeholder="Enter Employee Token"
             onChange={(e) => setToken(e.target.value)}
           />
 
@@ -74,7 +74,7 @@ export default function RegisterAdmin() {
       )}
 
       <p>
-        Already an admin? <Link to="/admin">Login</Link>
+        Already an employee? <Link to="/employee">Login</Link>
       </p>
     </form>
   );

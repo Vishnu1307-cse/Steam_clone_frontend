@@ -37,7 +37,7 @@ export default function GameDetails() {
   if (!game) return <p>Loading...</p>;
 
   const isOwner = user && game.uploadedBy?._id === user.id;
-  const isAdmin = user?.role === "admin";
+  const isAdmin = user?.role === "employee" || user?.role === "admin";
 
   const handleSave = async () => {
     const res = await api.put(`/games/${id}`, form);

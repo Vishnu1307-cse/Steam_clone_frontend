@@ -11,7 +11,7 @@ export default function MyAccount() {
 
   const fetchMyGames = async () => {
     try {
-      const res = await api.get("/games?mine=true");
+      const res = await api.get("/games/me");
       setGames(res.data);
     } catch (err) {
       console.error("Failed to fetch my games", err);

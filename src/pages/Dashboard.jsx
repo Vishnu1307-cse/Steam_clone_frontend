@@ -9,6 +9,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   const { registerHomeHandler } = useOutletContext();
+  const { registerSearchHandler } = useOutletContext();
 
   const fetchAllGames = async () => {
     setLoading(true);
@@ -24,7 +25,13 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchAllGames();
-    registerHomeHandler(fetchAllGames); // 🔥 expose to layout
+    registerHomeHandler(fetchAllGames); // expose to layout
+    // register a search handler so Header can push results here
+    if (registerSearchHandler) {
+      registerSearchHandler((results) => {
+        setGames(results);
+      });
+    }
   }, []);
 
   if (loading) {

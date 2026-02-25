@@ -4,13 +4,12 @@ import api from "../api/axios";
 import { useAuth } from "../auth/useAuth";
 import "../styles/auth.css";
 
-export default function LoginUser() {
+export default function LoginEmployee() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [showOtp, setShowOtp] = useState(false);
   const [userId, setUserId] = useState(null);
   const [otp, setOtp] = useState("");
@@ -27,23 +26,19 @@ export default function LoginUser() {
       if (res.data.twoFactorRequired) {
         setUserId(res.data.userId);
         setShowOtp(true);
-      } else {
-        alert("Unexpected response");
+      } else if (res.data.token) {
+        login(res.data.token);
+        navigate("/dashboard");
       }
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      alert(err.response?.data?.message || "Employee login failed");
     }
   };
 
   const handleVerify = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await api.post("/auth/verify-otp", {
-        userId,
-        otp
-      });
-
+      const res = await api.post("/auth/verify-otp", { userId, otp });
       login(res.data.token);
       navigate("/dashboard");
     } catch (err) {
@@ -56,7 +51,7 @@ export default function LoginUser() {
       {!showOtp ? (
         <form className="auth-card" onSubmit={handleSubmit}>
           <h1>Steam Clone</h1>
-          <h2>Login</h2>
+          <h2>Employee Login</h2>
 
           <input
             type="email"
@@ -78,25 +73,18 @@ export default function LoginUser() {
 
           <div className="auth-links">
             <p>
-              New user? <Link to="/register">Register</Link>
+              Need employee access? <Link to="/employee/register">Request employee account</Link>
             </p>
 
             <p>
-              Employee login →{" "}
-              <Link to="/employee/login">Click here</Link>
+              User? <Link to="/">Login here</Link>
             </p>
-
-            <p>
-              Register as employee →{" "}
-              <Link to="/employee/register">Request account</Link>
-            </p>
-
           </div>
         </form>
       ) : (
         <form className="auth-card" onSubmit={handleVerify}>
-          <h1>Verify OTP</h1>
-          <p>We sent a code to your email.</p>
+          <h1>Enter OTP</h1>
+          <p>We've sent a one-time code to your email. It expires in 5 minutes.</p>
 
           <input
             type="text"
@@ -110,13 +98,7 @@ export default function LoginUser() {
 
           <div className="auth-links">
             <p>
-              Back to{" "}
-              <span
-                style={{ cursor: "pointer", color: "#38bdf8" }}
-                onClick={() => setShowOtp(false)}
-              >
-                login
-              </span>
+              Back to <a onClick={() => setShowOtp(false)}>login</a>
             </p>
           </div>
         </form>

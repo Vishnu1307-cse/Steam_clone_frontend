@@ -8,6 +8,7 @@ export default function AppLayout() {
   const navigate = useNavigate();
 
   const homeHandlerRef = useRef(null);
+  const searchHandlerRef = useRef(null);
 
   const handleHome = () => {
     if (homeHandlerRef.current) {
@@ -23,10 +24,16 @@ export default function AppLayout() {
 
   return (
     <>
-      <Header onHome={handleHome} onLogout={handleLogout} />
+      <Header onHome={handleHome} onLogout={handleLogout} onSearchResults={(results) => {
+        if (searchHandlerRef.current) {
+          searchHandlerRef.current(results);
+        }
+        navigate("/dashboard");
+      }} />
       <Outlet
         context={{
-          registerHomeHandler: (fn) => (homeHandlerRef.current = fn)
+          registerHomeHandler: (fn) => (homeHandlerRef.current = fn),
+          registerSearchHandler: (fn) => (searchHandlerRef.current = fn)
         }}
       />
     </>

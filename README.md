@@ -5,7 +5,7 @@ A modern React-based frontend application for a Steam-like game distribution pla
 ## Features
 
 - **User Authentication**: Secure login and registration for players
-- **Admin Panel**: Administrative interface for managing users and game uploads
+- **Employee Panel**: Administrative interface for managing users and game uploads
 - **Game Library**: Browse and manage your collection of games
 - **Game Details**: Detailed information pages for each game
 - **Purchase System**: Integrated purchase functionality for buying games
@@ -116,7 +116,7 @@ Authentication System
 The application uses JWT-based authentication with the following user types:
 
 Regular Users: Can browse games, make purchases, and manage their library
-Admin Users: Can manage users, upload games, and handle admin requests
+Employee Users: Can manage users, upload games, and handle employee requests
 Authentication is managed through:
 
 AuthContext.jsx: Provides global authentication state
@@ -131,12 +131,12 @@ Authentication token management
 Error handling
 Key Pages
 Dashboard: Main landing page with featured games
-Login/Register: User and admin authentication pages
+Login/Register: User and employee authentication pages
 Game Details: Detailed information about individual games
 Library: User's collection of purchased games
 Purchase: Game purchasing interface
 My Account: User profile and account management
-Admin Users: Admin panel for user management
+Employee Users: Employee panel for user management
 Upload Game: Interface for admins to upload new games
 Development Workflow
 Create feature branches for new features

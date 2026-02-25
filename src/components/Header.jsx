@@ -34,11 +34,14 @@ export default function Header({ onSearchResults, onHome, onLogout }) {
             <span onClick={() => navigate("/account")}>My Account</span>
             <span onClick={() => navigate("/upload")}>Upload Games</span>
             <span onClick={onLogout}>Logout</span>
-              {user?.role === "admin" && (
-            <span onClick={() => navigate("/admin/users")}>
-              All Users
-            </span>
-            )}
+              {(user?.role === "employee" || user?.role === "admin" || user?.role === "superadmin") && (
+              <span onClick={() => navigate("/employee/users")}>
+                All Users
+              </span>
+              )}
+              {user?.role === "superadmin" && (
+                <span onClick={() => navigate("/superadmin/logs")}>Logs</span>
+              )}
           </nav>
 
           <form className="search" onSubmit={handleSearch}>

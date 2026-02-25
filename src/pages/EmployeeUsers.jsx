@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 
-export default function AdminUsers() {
+export default function EmployeeUsers() {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
 

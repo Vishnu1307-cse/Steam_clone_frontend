@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import "../styles/dashboard.css";
+
 export default function GameCard({ game }) {
   const navigate = useNavigate();
 
@@ -7,12 +9,18 @@ export default function GameCard({ game }) {
     <div
       className="game-card"
       onClick={() => navigate(`/games/${game._id}`)}
-      style={{ cursor: "pointer" }}
     >
-      <img src={game.coverImage} alt={game.title} />
+      <div className="image-wrap">
+        <img src={game.coverImage} alt={game.title} />
+      </div>
+
       <h3>{game.title}</h3>
-      <p className="price">₹{game.price}</p>
-      <p className="creator">By {game.uploadedBy?.username}</p>
+
+      <div className="price">₹{game.price}</div>
+
+      <div className="creator">
+        By {game.uploadedBy?.username || "Unknown"}
+      </div>
     </div>
   );
 }

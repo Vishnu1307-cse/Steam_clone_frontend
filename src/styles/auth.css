@@ -1,11 +1,9 @@
 /* ===== Auth Page Background ===== */
 .auth-page {
   min-height: 100vh;
-  background: radial-gradient(
-      circle at top,
+  background: radial-gradient(circle at top,
       rgba(56, 189, 248, 0.15),
-      transparent 60%
-    ),
+      transparent 60%),
     linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   display: flex;
   align-items: center;
@@ -97,6 +95,37 @@
   color: #38bdf8;
   text-decoration: none;
   font-weight: 500;
+}
+
+/* ===== Auth Tabs ===== */
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #374151;
+  background: #020617;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #9ca3af;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.tab-button:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.tab-button.active {
+  border-color: #38bdf8;
+  background: #38bdf8;
+  color: #020617;
 }
 
 .auth-links a:hover {
