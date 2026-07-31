@@ -1,133 +1,123 @@
-/* ===== Auth Page Background ===== */
+/* ====================================
+   🔥 STEAM GUARD & AUTH PAGE STYLING
+==================================== */
+
 .auth-page {
   min-height: 100vh;
-  background: radial-gradient(circle at top,
-      rgba(56, 189, 248, 0.15),
-      transparent 60%),
-    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: #171a21;
+  background-image: radial-gradient(circle at 50% 30%, #1e354d 0%, #0d1217 80%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Inter', sans-serif;
+  padding: 20px;
 }
 
-/* ===== Login Card ===== */
 .auth-card {
-  background: linear-gradient(180deg, #111827, #020617);
-  width: 400px;
-  padding: 36px 34px;
-  border-radius: 18px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65);
-  color: #e5e7eb;
+  background: linear-gradient(180deg, #182432 0%, #101721 100%);
+  width: 440px;
+  padding: 40px 36px;
+  border-radius: 4px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(102, 192, 244, 0.2);
+  color: #c7d5e0;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== Title ===== */
+.steam-auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.steam-guard-icon {
+  width: 50px;
+  height: 50px;
+  color: #66c0f4;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(102, 192, 244, 0.5));
+}
+
 .auth-card h1 {
-  text-align: center;
-  margin-bottom: 4px;
-  font-size: 30px;
-  letter-spacing: 1px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
 }
 
 .auth-card h2 {
-  text-align: center;
-  font-size: 17px;
-  font-weight: 400;
-  margin-bottom: 28px;
-  color: #9ca3af;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #66c0f4;
+  text-transform: uppercase;
+  margin-top: 4px;
 }
 
-/* ===== Inputs ===== */
 .auth-card input {
   width: 100%;
-  padding: 13px 14px;
-  margin-bottom: 16px;
-  border-radius: 10px;
-  border: 1px solid #374151;
-  background: #020617;
-  color: #f9fafb;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border-radius: 2px;
+  border: 1px solid #2a475e;
+  background: #0e141d;
+  color: #ffffff;
   font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .auth-card input::placeholder {
-  color: #9ca3af;
+  color: #556772;
 }
 
 .auth-card input:focus {
-  outline: none;
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.8);
+  border-color: #66c0f4;
+  box-shadow: 0 0 8px rgba(102, 192, 244, 0.4);
 }
 
-/* ===== Button ===== */
 .auth-card button {
   width: 100%;
-  padding: 13px;
-  margin-top: 6px;
-  border-radius: 10px;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #47bfff 0%, #1a9fff 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
   border: none;
-  background: linear-gradient(135deg, #38bdf8, #2563eb);
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 0 10px rgba(26, 159, 255, 0.3);
+  transition: all 0.2s ease;
 }
 
 .auth-card button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.25);
+  background: linear-gradient(90deg, #66cbff 0%, #33a8ff 100%);
+  box-shadow: 0 0 16px rgba(102, 192, 244, 0.5);
 }
 
-/* ===== Links ===== */
 .auth-links {
-  margin-top: 22px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  color: #8f98a0;
 }
 
 .auth-links a {
-  color: #38bdf8;
-  text-decoration: none;
+  color: #66c0f4;
   font-weight: 500;
 }
 
-/* ===== Auth Tabs ===== */
-.auth-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.tab-button {
-  flex: 1;
-  padding: 12px 15px;
-  border: 2px solid #374151;
-  background: #020617;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #9ca3af;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
-
-.tab-button:hover {
-  border-color: #38bdf8;
-  color: #38bdf8;
-}
-
-.tab-button.active {
-  border-color: #38bdf8;
-  background: #38bdf8;
-  color: #020617;
-}
-
 .auth-links a:hover {
+  color: #ffffff;
   text-decoration: underline;
 }

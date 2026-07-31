@@ -23,20 +23,32 @@ export default function Library() {
   }, []);
 
   if (loading) {
-    return <p style={{ textAlign: "center" }}>Loading library...</p>;
+    return (
+      <div className="steam-dashboard-container">
+        <div className="steam-loader">
+          <div className="spinner"></div>
+          <p>OPENING STEAM LIBRARY...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="dashboard">
-      <h2 style={{ marginBottom: "20px" }}>My Library</h2>
+    <div className="steam-dashboard-container">
+      <div className="catalog-header-bar" style={{ marginTop: "10px" }}>
+        <h2 className="section-title">MY GAME COLLECTION ({games.length})</h2>
+      </div>
 
-      <div className="games-grid">
+      <div className="steam-games-grid">
         {games.length > 0 ? (
           games.map((game) => (
             <GameCard key={game._id} game={game} />
           ))
         ) : (
-          <p>You haven’t purchased any games yet.</p>
+          <div className="empty-store-msg">
+            <h3>Your Steam Library is empty.</h3>
+            <p>Browse the store to purchase your favorite titles!</p>
+          </div>
         )}
       </div>
     </div>
