@@ -1,123 +1,211 @@
 /* ====================================
-   🔥 STEAM GUARD & AUTH PAGE STYLING
+   🔥 RETROSTEAM AUTH — DARK & LIGHT
 ==================================== */
 
 .auth-page {
   min-height: 100vh;
-  background: #171a21;
-  background-image: radial-gradient(circle at 50% 30%, #1e354d 0%, #0d1217 80%);
+  background: var(--bg-root);
+  background-image: radial-gradient(ellipse at 50% 30%, var(--bg-surface) 0%, var(--bg-root) 75%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Inter', sans-serif;
-  padding: 20px;
+  padding: 24px;
+  transition: background 0.3s ease;
 }
 
+/* ---- AUTH CARD ---- */
 .auth-card {
-  background: linear-gradient(180deg, #182432 0%, #101721 100%);
-  width: 440px;
-  padding: 40px 36px;
-  border-radius: 4px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(102, 192, 244, 0.2);
-  color: #c7d5e0;
+  background: var(--auth-bg);
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px 32px;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--auth-border);
+  border: 1px solid var(--auth-border);
+  color: var(--text-normal);
   display: flex;
   flex-direction: column;
+  gap: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+/* ---- HEADER BLOCK ---- */
 .steam-auth-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 28px;
+  text-align: center;
 }
 
 .steam-guard-icon {
-  width: 50px;
-  height: 50px;
-  color: #66c0f4;
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
   margin-bottom: 10px;
-  filter: drop-shadow(0 0 10px rgba(102, 192, 244, 0.5));
+  filter: drop-shadow(0 0 10px var(--accent-glow));
 }
 
 .auth-card h1 {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: 2px;
-  color: #ffffff;
+  letter-spacing: 3px;
+  color: var(--text-bright);
+  text-transform: uppercase;
 }
 
 .auth-card h2 {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 1px;
-  color: #66c0f4;
+  letter-spacing: 1.5px;
+  color: var(--accent);
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 6px;
+  opacity: 0.9;
 }
 
+/* ---- LABELS ---- */
+.auth-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+[data-theme="light"] .auth-label {
+  color: var(--text-muted);
+}
+
+/* ---- INPUTS ---- */
 .auth-card input {
   width: 100%;
-  padding: 12px 14px;
+  padding: 11px 14px;
   margin-bottom: 18px;
-  border-radius: 2px;
-  border: 1px solid #2a475e;
-  background: #0e141d;
-  color: #ffffff;
+  border-radius: 3px;
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-input);
+  color: var(--text-bright);
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+[data-theme="light"] .auth-card input {
+  border-color: rgba(180, 140, 80, 0.4);
+  background: #ffffff;
+  color: #0f172a;
+}
+
 .auth-card input::placeholder {
-  color: #556772;
+  color: var(--text-dim);
+  font-style: italic;
 }
 
 .auth-card input:focus {
-  border-color: #66c0f4;
-  box-shadow: 0 0 8px rgba(102, 192, 244, 0.4);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
+/* OTP input special styling */
+.otp-input {
+  text-align: center;
+  letter-spacing: 8px;
+  font-family: 'VT323', monospace;
+  font-size: 28px !important;
+  font-weight: 400;
+  color: var(--accent) !important;
+  background: var(--bg-input) !important;
+  border-color: var(--accent) !important;
+  padding: 14px !important;
+}
+
+[data-theme="light"] .otp-input {
+  background: #fffbf0 !important;
+  color: #92400e !important;
+  border-color: #d97706 !important;
+}
+
+/* ---- BUTTONS ---- */
 .auth-card button {
   width: 100%;
   padding: 12px;
-  margin-top: 8px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #47bfff 0%, #1a9fff 100%);
-  color: #ffffff;
-  font-size: 14px;
+  margin-top: 4px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dim) 100%);
+  color: #000000;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(26, 159, 255, 0.3);
+  box-shadow: 0 4px 16px var(--accent-glow);
   transition: all 0.2s ease;
 }
 
 .auth-card button:hover {
-  background: linear-gradient(90deg, #66cbff 0%, #33a8ff 100%);
-  box-shadow: 0 0 16px rgba(102, 192, 244, 0.5);
+  filter: brightness(1.12);
+  box-shadow: 0 6px 22px var(--accent-glow);
+  transform: translateY(-1px);
 }
 
+.auth-card button:active {
+  transform: translateY(0);
+}
+
+/* OTP description text */
+.otp-hint-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ---- AUTH LINKS ---- */
 .auth-links {
-  margin-top: 24px;
+  margin-top: 22px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-subtle);
   text-align: center;
   font-size: 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #8f98a0;
+  color: var(--text-dim);
 }
 
 .auth-links a {
-  color: #66c0f4;
-  font-weight: 500;
+  color: var(--brand);
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .auth-links a:hover {
-  color: #ffffff;
+  color: var(--accent);
   text-decoration: underline;
+}
+
+/* ---- RETRO DIVIDER ---- */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
 }

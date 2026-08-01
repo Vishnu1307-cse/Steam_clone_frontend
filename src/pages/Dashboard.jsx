@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import GameCard from "../components/GameCard";
 import "../styles/dashboard.css";
+
+const CATEGORIES = ["All", "Top Sellers", "New Releases", "Action", "Indie"];
+const HERO_COUNT = 5;
+const AUTO_ADVANCE_MS = 5000;
 
 export default function Dashboard() {
   const [games, setGames] = useState([]);
@@ -14,7 +18,7 @@ export default function Dashboard() {
   const outletContext = useOutletContext() || {};
   const { registerHomeHandler, registerSearchHandler } = outletContext;
 
-  const fetchAllGames = async () => {
+  const fetchAllGames = useCallback(async () => {
     setLoading(true);
     try {
       const res = await api.get("/games");
@@ -24,15 +28,22 @@ export default function Dashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  // Auto-advance carousel every 5 seconds
+  useEffect(() => {
+    if (games.length <= 1) return;
+    const timer = setInterval(() => {
+      setFeaturedIndex((i) => (i + 1) % Math.min(games.length, HERO_COUNT));
+    }, AUTO_ADVANCE_MS);
+    return () => clearInterval(timer);
+  }, [games.length]);
 
   useEffect(() => {
     fetchAllGames();
     if (registerHomeHandler) registerHomeHandler(fetchAllGames);
     if (registerSearchHandler) {
-      registerSearchHandler((results) => {
-        setGames(results);
-      });
+      registerSearchHandler((results) => setGames(results));
     }
   }, []);
 
@@ -42,8 +53,8 @@ export default function Dashboard() {
     return (
       <div className="steam-dashboard-container">
         <div className="steam-loader">
-          <div className="spinner"></div>
-          <p>FETCHING STEAM CATALOG...</p>
+          <div className="spinner" />
+          <p>LOADING CATALOG...</p>
         </div>
       </div>
     );
@@ -51,51 +62,67 @@ export default function Dashboard() {
 
   return (
     <div className="steam-dashboard-container">
-      {/* FEATURED & RECOMMENDED HERO CAROUSEL */}
+      {/* HERO CAROUSEL */}
       {featuredGame && (
         <section className="steam-hero-section">
-          <h2 className="section-title">FEATURED & RECOMMENDED</h2>
-          
+          <h2 className="section-title">Featured &amp; Recommended</h2>
+
           <div className="hero-banner-card" onClick={() => navigate(`/games/${featuredGame._id}`)}>
+            {/* LEFT: Artwork */}
             <div className="hero-artwork-container">
-              <img src={featuredGame.coverImage} alt={featuredGame.title} className="hero-main-img" />
-              <div className="hero-badge">FEATURED STORE ITEM</div>
+              <img
+                src={featuredGame.coverImage}
+                alt={featuredGame.title}
+                className="hero-main-img"
+                onError={(e) => {
+                  e.target.src = "https://via.placeholder.com/800x400/1a2332/f59e0b?text=No+Image";
+                }}
+              />
+              <div className="hero-badge">⭐ FEATURED</div>
             </div>
 
+            {/* RIGHT: Details */}
             <div className="hero-details-container">
               <h1 className="hero-title">{featuredGame.title}</h1>
-              
+
               <div className="hero-screenshot-thumbs">
-                <img src={featuredGame.coverImage} alt="thumb" className="thumb active" />
-                <div className="thumb-placeholder">SCREENSHOT 1</div>
-                <div className="thumb-placeholder">SCREENSHOT 2</div>
+                <img src={featuredGame.coverImage} alt="thumb" className="thumb active"
+                  onError={(e) => { e.target.src = "https://via.placeholder.com/68x43/1a2332/f59e0b?text=IMG"; }}
+                />
+                <div className="thumb-placeholder">SCN 1</div>
+                <div className="thumb-placeholder">SCN 2</div>
               </div>
 
               <div className="hero-meta">
-                <span className="hero-status">Now Available</span>
+                <span className="hero-status">▶ Now Available on Steam Clone</span>
                 <div className="hero-tags">
                   <span className="tag">Action</span>
-                  <span className="tag">Multiplayer</span>
                   <span className="tag">Adventure</span>
+                  <span className="tag">Multiplayer</span>
                 </div>
               </div>
 
               <div className="hero-price-row">
-                <div className="hero-price">₹{featuredGame.price}</div>
-                <button className="steam-btn-green" onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/games/${featuredGame._id}`);
-                }}>
+                <div className="hero-price">
+                  {featuredGame.price === 0 ? "FREE" : `₹${featuredGame.price}`}
+                </div>
+                <button
+                  className="steam-btn-green"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/games/${featuredGame._id}`);
+                  }}
+                >
                   BUY NOW
                 </button>
               </div>
             </div>
           </div>
 
-          {/* CAROUSEL CONTROLS */}
+          {/* Carousel Dots */}
           {games.length > 1 && (
             <div className="carousel-dots">
-              {games.slice(0, 5).map((g, idx) => (
+              {games.slice(0, HERO_COUNT).map((g, idx) => (
                 <div
                   key={g._id || idx}
                   className={`dot ${idx === featuredIndex ? "active" : ""}`}
@@ -107,13 +134,12 @@ export default function Dashboard() {
         </section>
       )}
 
-      {/* STORE TABS & CATEGORIES */}
+      {/* CATALOG SECTION */}
       <section className="steam-catalog-section">
         <div className="catalog-header-bar">
-          <h2 className="section-title">BROWSE CATALOG</h2>
-
+          <h2 className="section-title">Browse Catalog</h2>
           <div className="category-pills">
-            {["All", "Top Sellers", "New Releases", "Action", "Indie"].map((cat) => (
+            {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 className={`cat-pill ${activeCategory === cat ? "active" : ""}`}
@@ -128,13 +154,11 @@ export default function Dashboard() {
         {/* GAMES GRID */}
         <div className="steam-games-grid">
           {games.length > 0 ? (
-            games.map((game) => (
-              <GameCard key={game._id} game={game} />
-            ))
+            games.map((game) => <GameCard key={game._id} game={game} />)
           ) : (
             <div className="empty-store-msg">
               <h3>No games found in the store.</h3>
-              <p>Check back later or upload your own game!</p>
+              <p>Check back later or upload a game!</p>
             </div>
           )}
         </div>

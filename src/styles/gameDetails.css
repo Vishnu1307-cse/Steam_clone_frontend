@@ -1,142 +1,167 @@
 /* ====================================
-   🔥 STEAM STORE PRODUCT PAGE STYLES
+   🔥 RETROSTEAM PRODUCT PAGE — DARK & LIGHT
 ==================================== */
 
 .steam-product-page {
   position: relative;
   min-height: 100vh;
-  color: var(--steam-text-normal);
+  color: var(--text-normal);
   padding-bottom: 80px;
+  transition: background 0.3s ease;
 }
 
+/* Cinematic blurred backdrop */
 .product-backdrop-header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 400px;
+  height: 420px;
   background-size: cover;
   background-position: center;
-  filter: blur(25px) opacity(0.25);
+  filter: blur(28px) opacity(0.2) saturate(1.2);
   z-index: 0;
   pointer-events: none;
+}
+
+[data-theme="light"] .product-backdrop-header {
+  filter: blur(28px) opacity(0.12) saturate(1.2);
 }
 
 .backdrop-overlay {
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(23, 26, 33, 0.4) 0%, #1b2838 100%);
+  background: linear-gradient(180deg, transparent 0%, var(--bg-root) 100%);
 }
 
 .product-page-content {
   position: relative;
   z-index: 10;
   max-width: 1200px;
-  margin: 20px auto 0;
-  padding: 0 16px;
+  margin: 24px auto 0;
+  padding: 0 20px;
 }
 
+/* Breadcrumb */
 .steam-breadcrumb {
   font-size: 12px;
-  color: #8f98a0;
-  margin-bottom: 12px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .steam-breadcrumb span {
   cursor: pointer;
+  transition: color 0.2s;
 }
 
 .steam-breadcrumb span:hover {
-  color: #ffffff;
+  color: var(--accent);
 }
 
+/* Page title */
 .product-main-title {
-  font-size: 32px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 30px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-bright);
   margin-bottom: 20px;
   letter-spacing: 1px;
+  line-height: 1.2;
 }
 
-/* LAYOUT GRID */
+/* ---- LAYOUT GRID ---- */
 .product-grid-layout {
   display: grid;
-  grid-template-columns: 65% 33%;
-  gap: 2%;
+  grid-template-columns: 63% minmax(0, 37%);
+  gap: 20px;
 }
 
-/* LEFT COLUMN */
+/* LEFT COL */
 .product-left-col {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  min-width: 0;
 }
 
 .product-hero-media {
   background: #000;
-  border-radius: 4px;
+  border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-subtle);
 }
 
 .product-cover-large {
   width: 100%;
-  max-height: 450px;
+  max-height: 440px;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 .product-description-block {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-card);
+  border-radius: 5px;
+  padding: 22px 24px;
+  border: 1px solid var(--border-subtle);
+  transition: background 0.3s ease;
 }
 
 .sub-header-title {
-  font-size: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #66c0f4;
+  letter-spacing: 2px;
+  color: var(--accent);
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(102, 192, 244, 0.2);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .description-text {
   font-size: 14px;
-  line-height: 1.7;
-  color: #c7d5e0;
+  line-height: 1.75;
+  color: var(--text-normal);
   white-space: pre-wrap;
 }
 
-/* RIGHT COLUMN METADATA */
+/* RIGHT COL */
 .product-right-col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  min-width: 0;
 }
 
 .product-meta-card {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--bg-card);
   padding: 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  border: 1px solid var(--border-subtle);
+  transition: background 0.3s ease;
 }
 
 .meta-thumb {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 2px;
-  margin-bottom: 12px;
+  border-radius: 3px;
+  margin-bottom: 14px;
+  display: block;
 }
 
 .product-short-desc {
   font-size: 12px;
-  color: #acb2b8;
-  line-height: 1.5;
+  color: var(--text-muted);
+  line-height: 1.6;
   margin-bottom: 16px;
 }
 
@@ -145,136 +170,226 @@
   flex-direction: column;
   gap: 8px;
   font-size: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-subtle);
   padding-top: 12px;
 }
 
 .meta-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 .meta-label {
-  color: #556772;
+  color: var(--text-dim);
   font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .meta-val {
-  color: #66c0f4;
-  font-weight: 500;
+  color: var(--brand);
+  font-weight: 600;
+  text-align: right;
+}
+
+[data-theme="light"] .meta-val {
+  color: var(--brand);
 }
 
 .review-positive {
-  color: #66c0f4;
+  color: var(--green) !important;
 }
 
-/* PURCHASE BOX */
+/* ---- PURCHASE BOX ---- */
 .purchase-action-box {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(20, 32, 46, 0.8) 100%);
+  background: var(--bg-surface);
   padding: 20px;
-  border-radius: 4px;
-  border: 1px solid rgba(102, 192, 244, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  border: 1.5px solid var(--border-card);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .purchase-action-box h2 {
-  font-size: 18px;
-  color: #ffffff;
-  margin-bottom: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .purchase-cta-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #000000;
-  padding: 4px 4px 4px 14px;
+  background: var(--bg-input);
+  padding: 8px 8px 8px 14px;
   border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-subtle);
+  gap: 12px;
 }
 
 .price-tag-badge {
-  font-size: 16px;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  color: var(--price-text);
+  background: var(--price-bg);
+  padding: 2px 10px;
+  border-radius: 3px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.buy-btn {
+  background: linear-gradient(90deg, var(--green-btn-from) 0%, var(--green-btn-to) 100%);
+  color: var(--green-text);
+  font-size: 12px;
   font-weight: 700;
-  color: #beee11;
+  letter-spacing: 1px;
+  padding: 9px 18px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.buy-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 14px rgba(164, 208, 7, 0.4);
+  transform: translateY(-1px);
 }
 
 .owned-badge {
-  background: #2a475e;
-  color: #66c0f4;
+  background: var(--bg-card);
+  color: var(--brand);
   font-size: 12px;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 2px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: 1px solid var(--border-card);
+  letter-spacing: 0.5px;
 }
 
-/* EDIT FORM */
+/* ---- EDIT FORM ---- */
 .edit-game-form {
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--bg-card);
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 5px;
+  border: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .edit-game-form label {
-  font-size: 12px;
-  color: #66c0f4;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.edit-game-form input, .edit-game-form textarea {
-  background: #10141d;
-  border: 1px solid #2a475e;
-  color: #ffffff;
-  padding: 8px 12px;
-  border-radius: 2px;
+.edit-game-form input,
+.edit-game-form textarea {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-subtle);
+  color: var(--text-bright);
+  padding: 9px 12px;
+  border-radius: 3px;
+  font-size: 13px;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+[data-theme="light"] .edit-game-form input,
+[data-theme="light"] .edit-game-form textarea {
+  background: #fff;
+  color: #0f172a;
+  border-color: rgba(180, 140, 80, 0.4);
+}
+
+.edit-game-form input:focus,
+.edit-game-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 .edit-actions-row {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .steam-btn-cancel {
-  background: #3d4450;
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 2px;
+  background: var(--bg-surface);
+  color: var(--text-normal);
+  padding: 9px 18px;
+  border-radius: 3px;
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
+.steam-btn-cancel:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-bright);
+}
+
+/* Admin zone */
 .admin-actions-card {
   background: rgba(239, 68, 68, 0.05);
   border: 1px solid rgba(239, 68, 68, 0.2);
   padding: 16px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .admin-actions-card h4 {
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 700;
   color: #f87171;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
+  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .admin-btn-group {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .steam-btn-danger {
   background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
   color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   padding: 8px 16px;
-  border-radius: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
 }
 
+.steam-btn-danger:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+/* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
   .product-grid-layout {
     grid-template-columns: 1fr;
+  }
+  .product-right-col {
+    order: -1;
   }
 }
